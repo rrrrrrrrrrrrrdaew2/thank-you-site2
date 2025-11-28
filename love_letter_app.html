@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Love Letter App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Babel for JSX runtime compilation -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<style>
+body {
+  font-family: 'Dancing Script', cursive;
+}
+</style>
+</head>
+
+<body class="bg-gradient-to-br from-pink-100 via-rose-50 to-red-100 min-h-screen flex items-center justify-center">
+
+<div id="root"></div>
+
+<script type="text/babel" data-presets="env,react">
+
+function App() {
+  const { useState } = React;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const pages = [
+    {
+      title: "My beautiful baby",
+      content: (
+        <>
+          <p>
+            Baby i just wanna say is I love you soooo much. I wish we meet soon in person.
+            Thank you for being my light, my home, and for loving me with such pure affection.
+          </p>
+
+          <p>You are my everything, my forever.</p>
+        </>
+      )
+    },
+    {
+      title: "My love",
+      content: (
+        <>
+          <p>
+            Dear Yuns,
+            Sometimes things get hard but i'll always be here for you.
+            Thank you for your patience, support, and unconditional love.
+            You are my soulmate, my best friend, my greatest blessing.
+          </p>
+
+          <p>I love you forever.</p>
+        </>
+      )
+    },
+    {
+      title: "With All My Heart ❤❤",
+      content: (
+        <>
+          <p>
+            Mahal kong Yuns,
+            Minsan mahirap ang mga bagay-bagay pero palagi akong nandito para sa’yo.
+            Salamat sa iyong pasensya, suporta, at walang kondisyong pagmamahal.
+            Salamat sa pagpili sa’kin, araw-araw.
+          </p>
+          <p>
+            Ikaw ang aking baby, magpakailanman.
+            Gusto kong pasalamatan ka sa lahat ng bagay.
+          </p>
+
+          <p>Mahal na mahal kita, muah❤❤.</p>
+        </>
+      )
+    }
+  ];
+
+  const handleNext = () => {
+    if (currentPage < pages.length) setCurrentPage(currentPage + 1);
+  };
+
+  const handleBack = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  return (
+    <div className="w-full max-w-md p-4">
+      <div className="bg-white shadow-2xl rounded-sm p-6 border border-rose-200 relative overflow-hidden">
+        <div className="absolute top-2 left-2 text-rose-200 text-xl">❤</div>
+        <div className="absolute top-2 right-2 text-rose-200 text-xl">❤</div>
+
+        <div className="text-right text-rose-400 italic text-sm">
+          {new Date().toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' })}
+        </div>
+
+        <div className="text-center space-y-3 mt-3">
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-rose-400 text-sm">♥</span>
+            <h1 className="text-rose-600 italic">{pages[currentPage - 1].title}</h1>
+            <span className="text-rose-400 text-sm">♥</span>
+          </div>
+
+          <div className="space-y-2 text-rose-800 italic text-sm leading-relaxed">
+            {pages[currentPage - 1].content}
+          </div>
+        </div>
+
+        <div className="text-right space-y-1 mt-6 text-sm">
+          <p className="text-gray-700">With all my love,</p>
+          <p className="italic text-rose-600">Your Sandesh ♡</p>
+        </div>
+
+        <div className="absolute bottom-2 left-2 text-rose-200 text-xl">❤</div>
+        <div className="absolute bottom-2 right-2 text-rose-200 text-xl">❤</div>
+      </div>
+
+      <div className="flex justify-between items-center mt-4">
+        <button
+          onClick={handleBack}
+          disabled={currentPage === 1}
+          className="px-3 py-2 bg-rose-500 text-white rounded-lg disabled:bg-gray-300"
+        >
+          Back
+        </button>
+
+        <span className="text-rose-600 text-sm">
+          Page {currentPage} of {pages.length}
+        </span>
+
+        <button
+          onClick={handleNext}
+          disabled={currentPage === pages.length}
+          className="px-3 py-2 bg-rose-500 text-white rounded-lg disabled:bg-gray-300"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+
+<!-- React & ReactDOM -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+</body>
+</html>
